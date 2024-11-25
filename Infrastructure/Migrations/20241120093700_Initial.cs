@@ -22,7 +22,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Count = table.Column<int>(type: "integer", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    Discount = table.Column<decimal>(type: "numeric", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,11 +36,27 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Discount = table.Column<decimal>(type: "numeric", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecordWrites",
+                schema: "WarehouseManagment",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    AutomobileID = table.Column<Guid>(type: "uuid", nullable: false),
+                    Value = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecordWrites", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,6 +98,10 @@ namespace Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AutomobileCategory",
+                schema: "WarehouseManagment");
+
+            migrationBuilder.DropTable(
+                name: "RecordWrites",
                 schema: "WarehouseManagment");
 
             migrationBuilder.DropTable(

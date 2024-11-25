@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(WarehouseDbContext))]
-    [Migration("20241108094947_Initial2")]
-    partial class Initial2
+    [Migration("20241120093700_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,12 +49,12 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("integer");
 
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("numeric");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
@@ -69,6 +69,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");

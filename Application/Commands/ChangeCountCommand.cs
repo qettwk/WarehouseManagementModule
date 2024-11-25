@@ -28,7 +28,6 @@ namespace Application.Commands
         public async Task<AutomobileGetDTO> Handle(ChangeCountCommand command, CancellationToken cancellationToken)
         {
             var automobile = await _warehouseDbContext.Automobiles
-                .Include(x => x.Categories)
                 .FirstOrDefaultAsync(auto => auto.Id == command.Id);
 
             automobile.Count += command.ChangeValue;

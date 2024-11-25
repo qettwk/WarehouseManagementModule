@@ -19,13 +19,13 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Guid>>> SendAutomobilesToOrder(List<Guid> receivedGuid)
+        public async Task<IActionResult> SendAutomobilesToOrder(OrderAddAutomobilesDTO OrderAddAutomobilesDTO)
         {
             GetAutomobileIDsQuery query = new GetAutomobileIDsQuery
             {
-                IDs = receivedGuid
+                orderAddAutomobilesDTO = OrderAddAutomobilesDTO
             };
-            var result =  await _mediator.Send(query);
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
 

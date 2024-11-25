@@ -46,12 +46,12 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("integer");
 
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("numeric");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");

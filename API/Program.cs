@@ -36,7 +36,7 @@ namespace API
                     logConf.Enrich.FromLogContext();
                 });
 
-                // Add services to the container.
+                // Add some services to the container
 
                 builder.Services.AddControllers();
 
